@@ -9,8 +9,7 @@ use Auth;
 class PetController extends Controller
 {
     public function add()
-    {
-         
+    {     
         return view('admin.pet.signup');
     }
         
@@ -87,6 +86,18 @@ class PetController extends Controller
         $pets->delete();
 
         return redirect('admin/pet/');
+    }
+
+    public function vital(Request $request)
+    {  
+        $posts = Pet::all();
+        
+        return view('admin.pet.vital',['posts' => $posts]);
+    }
+
+    public function vitallist()
+    {     
+        return view('admin.pet.vitallist');
     }
 
 }

@@ -8,6 +8,12 @@
             <div class="text-center">
                 <h3>ペット新規登録</h3>
 
+                <div class="form-group row">
+                    <!-- <label class="col-md-2">画像</label> -->
+                    <div class="col-md-10">
+                        <input type="file" class="form-control-file" name="image">
+                    </div>
+                </div>
                 <div class="d-flex justify-content-top">
                     <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-secondary">戻る</a>
                 </div>
@@ -23,7 +29,7 @@
 
                     <div class="card">
                         <ul class="list-group list-group-flush">
-                            
+
                             <li class="list-group-item">
                                 <input class="form-control" type="text" name="name" placeholder="名前"
                                     aria-label="default input example">

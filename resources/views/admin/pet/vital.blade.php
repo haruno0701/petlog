@@ -1,20 +1,13 @@
 @extends('layouts.admin')
-@section('title', 'ペット一覧')
+@section('title', '体調管理')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="text-center">
-                <h3>ペット一覧</h3>
-
-                <div class="d-flex justify-content-end">
-                    <a href="{{ route('admin.pet.add') }}" role="button" class="btn btn-secondary">+</a>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 bg-light">
-
-                    <tbody>
+                <tbody>
+                    <div class="col-12 col-md-6 col-lg-4 bg-light">
                         @foreach($posts as $pets)
                             <img src="..." class="rounded mx-auto d-block" alt="...">
                             <tr>
@@ -36,19 +29,14 @@
                                         <td>{{ Str::limit($pets->memo, 250) }}</td>
                                     </li>
                                     <div class="d-flex justify-content-end">
-                                        <a href="{{ route('admin.pet.vital') }}" role="button" class="btn btn-secondary">
-                                            体調管理へ
-                                        </a>
+                                        <button class="btn btn-secondary" type="button">
+                                            体調管理一覧へ
+                                        </button>
                                     </div>
-                                    <div>
-                                        <a href="{{ route('admin.pet.delete', ['id' => $pets->id]) }}">削除</a>
-                                    </div>
-
                                 </ul>
                             </tr>
                         @endforeach
-                    </tbody>
-                </div>
+                </tbody>
             </div>
         </div>
     </div>

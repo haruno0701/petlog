@@ -63,9 +63,9 @@
         </main>
         <footer class="footer">
             <div class="container text-center">
-                <button class="btn btn-primary" type="button">
+                <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-primary">
                     ペット
-                </button>
+                </a>
                 <button class="btn btn-primary" type="button">
                     体重比較
                 </button>
