@@ -39,8 +39,14 @@
                                     aria-label="default input example">
                             </li>
                             <li class="list-group-item">
-                                <input class="form-control" type="text" name="breed" placeholder="種類"
+                                <input class="form-control" type="text" name="kinds" placeholder="種類"
                                     aria-label="default input example">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
                             </li>
                             <li class="list-group-item">
                                 <input class="form-control" type="text" name="birthday" placeholder="誕生日"

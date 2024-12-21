@@ -22,12 +22,16 @@
                                     <li class="list-group-item">名前
                                         <td>{{ Str::limit($pets->name, 80) }}</td>
                                     </li>
-                                    <li class="list-group-item">年齢</li>
+                                    <li class="list-group-item">年齢
+                                    <td>
+                                        {{ $pets->getAgeAttribute() }} 才 {{ $pets->getMonthAttribute() }}ヶ月
+                                    </td>
+                                    </li>
                                     <li class="list-group-item">性別
                                         <td>{{ Str::limit($pets->gender, 80) }}</td>
                                     </li>
                                     <li class="list-group-item">種類
-                                        <td>{{ Str::limit($pets->breed, 100) }}</td>
+
                                     </li>
                                     <li class="list-group-item">誕生日
                                         <td>{{ Str::limit($pets->birthday, 150) }}</td>
@@ -36,7 +40,8 @@
                                         <td>{{ Str::limit($pets->memo, 250) }}</td>
                                     </li>
                                     <div class="d-flex justify-content-end">
-                                        <a href="{{ route('admin.pet.vital') }}" role="button" class="btn btn-secondary">
+                                        <a href="{{ route('admin.pet.vital', ['id' => $pets->id]) }}" role="button"
+                                            class="btn btn-secondary">
                                             体調管理へ
                                         </a>
                                     </div>

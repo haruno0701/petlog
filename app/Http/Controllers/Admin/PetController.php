@@ -75,29 +75,31 @@ class PetController extends Controller
        
         $pets->fill($pets_form)->save();
 
-        return redirect('admin/pet');
+        return redirect('admin/pet/top');
     }
 
     public function delete(Request $request)
     {
       
-        $pets = Pet::find($request->id);
+        $pet = Pet::find($request->id);
 
-        $pets->delete();
+        $pet->delete();
 
-        return redirect('admin/pet/');
+        return redirect('admin/pet/top');
     }
 
     public function vital(Request $request)
     {  
-        $posts = Pet::all();
+        $pet = Pet::find($request->id);
         
-        return view('admin.pet.vital',['posts' => $posts]);
+        return view('admin.pet.vital',['pet' => $pet]);
     }
 
-    public function vitallist()
+    public function vitallist(Request $request)
     {     
-        return view('admin.pet.vitallist');
+        $pet = Pet::all();
+        
+        return view('admin.pet.vitallist',['pet' => $pet]);
     }
 
 }
