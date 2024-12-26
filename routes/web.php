@@ -26,6 +26,7 @@ Route::controller(PetController::class)->prefix('admin')->name('admin.pet.')->mi
     Route::get('pet/delete', 'delete')->name('delete');
     Route::get('pet/vital', 'vital')->name('vital');
     Route::get('pet/vitallist', 'vitallist')->name('vitallist');
+    Route::get('pet/bw', 'bw')->name('bw');
 });
 
 Auth::routes();

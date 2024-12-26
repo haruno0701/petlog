@@ -38,5 +38,10 @@ class Pet extends Model
         return $month;
     }
 
+    public function animal()
+    {
+        return $this->belongsTo('App\Models\Animal');
+    }
+
 }
 

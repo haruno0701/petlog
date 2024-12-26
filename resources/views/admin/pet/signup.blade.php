@@ -7,18 +7,15 @@
         <div class="col-md-3 mx-auto">
             <div class="text-center">
                 <h3>ペット新規登録</h3>
-
-                <div class="form-group row">
-                    <!-- <label class="col-md-2">画像</label> -->
-                    <div class="col-md-10">
-                        <input type="file" class="form-control-file" name="image">
-                    </div>
-                </div>
-                <div class="d-flex justify-content-top">
-                    <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-secondary">戻る</a>
-                </div>
                 <form action="{{ route('admin.pet.create') }}" method="post" enctype="multipart/form-data">
-
+                    <div class="form-group row">                  
+                        <div class="col-md-10">
+                            <input type="file" class="form-control-file" name="image">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-top">
+                        <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-secondary">戻る</a>
+                    </div>
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -26,7 +23,6 @@
                             @endforeach
                         </ul>
                     @endif
-
                     <div class="card">
                         <ul class="list-group list-group-flush">
 
@@ -39,13 +35,11 @@
                                     aria-label="default input example">
                             </li>
                             <li class="list-group-item">
-                                <input class="form-control" type="text" name="kinds" placeholder="種類"
-                                    aria-label="default input example">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" name="animal_id" aria-label="Default select example">
+                                    <option selected>犬猫種</option>
+                                    @foreach($animals as $animal)
+                                        <option value="{{$animal->id}}">{{$animal->name}}</option>
+                                    @endforeach
                                 </select>
                             </li>
                             <li class="list-group-item">

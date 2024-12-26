@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 use App\Models\Pet;
 use Auth;
 class PetController extends Controller
 {
-    public function add()
+    public function add(Request $request)
     {     
-        return view('admin.pet.signup');
+
+        $animals = Animal::orderBy('kinds')->orderBy('name')->get();
+
+        return view('admin.pet.signup',['animals' => $animals]);
     }
         
 
@@ -33,8 +37,9 @@ class PetController extends Controller
 
         $pets->fill($form);
         $pets->user_id = Auth::id();
-
         $pets->save();
+
+        
         
         return redirect('admin/pet/top');
     }
@@ -90,9 +95,9 @@ class PetController extends Controller
 
     public function vital(Request $request)
     {  
-        $pet = Pet::find($request->id);
+        $pets = Pet::find($request->id);
         
-        return view('admin.pet.vital',['pet' => $pet]);
+        return view('admin.pet.vital',['pets' => $pets]);
     }
 
     public function vitallist(Request $request)
@@ -101,5 +106,13 @@ class PetController extends Controller
         
         return view('admin.pet.vitallist',['pet' => $pet]);
     }
+
+    public function bw(Request $request)
+    {     
+        $pet = Pet::all();
+        
+        return view('admin.pet.bw',['pet' => $pet]);
+    }
+
 
 }
