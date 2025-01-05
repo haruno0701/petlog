@@ -1,15 +1,15 @@
-body {
-  color: #000000;
+.bread ul {
+  display: flex;
+  list-style-type: none;
 }
 
-.navbar-brand {
-  color: #000000;
+.bread li a {
+  padding: 5px;
+  text-decoration: none;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #ffffff;
+.bread li a::after {
+  content: ">";
+  margin-left: 10px;
+  color: black;
 }

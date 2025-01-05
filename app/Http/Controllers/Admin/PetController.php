@@ -107,11 +107,11 @@ class PetController extends Controller
         return view('admin.pet.vitallist',['pet' => $pet]);
     }
 
-    public function bw(Request $request)
+    public function weight(Request $request)
     {     
         $pet = Pet::all();
         
-        return view('admin.pet.bw',['pet' => $pet]);
+        return view('admin.pet.weight',['pet' => $pet]);
     }
 
 

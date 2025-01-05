@@ -2,8 +2,8 @@
 @section('title', '体調管理')
 
 @section('content')
-<div class="container">
-    <div class="row">
+
+<div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="pet">
@@ -49,12 +49,12 @@
                     体調管理一覧へ
                 </a>
             </div>
-            <div class="list-group">
-                <a href="{{ route('admin.pet.bw') }}" class="list-group-item list-group-item-action">体重</a>
-                <a href="#" class="list-group-item list-group-item-action">体温</a>
-                <a href="#" class="list-group-item list-group-item-action">散歩</a>
-                <a href="#" class="list-group-item list-group-item-action">尿</a>
-                <a class="list-group-item list-group-item-action disabled">便</a>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="{{ route('admin.pet.weight') }}" class="btn btn-outline-dark">体重</a>
+                <a href="#" class="btn btn-outline-dark">体温</a>
+                <a href="#" class="btn btn-outline-dark">散歩</a>
+                <a href="#" class="btn btn-outline-dark">尿</a>
+                <a href="#" class="btn btn-outline-dark">便</a>
             </div>
         </div>
     </div>

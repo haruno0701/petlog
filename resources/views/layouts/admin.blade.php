@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/create.css') }}" rel="stylesheet">
     </head>
 
 
@@ -59,23 +60,34 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
-            @yield('content')
-        </main>
-        <footer class="footer">
-            <div class="container text-center">
-                <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-primary">
-                    ペット
-                </a>
-                <button class="btn btn-primary" type="button">
-                    体重比較
-                </button>
-                <button class="btn btn-primary" type="button">
-                    オススメ
-                </button>
-            </div>
-        </footer>
-    </div>
+        <div class="container">
+            @foreach ($pets as $pet)
+                <div class="bread">
+                    <ul>
+                        <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
+                        <li><a href="http://127.0.0.1:8080/admin/pet/vital?id=17">ぽん</a></li>
+                    </ul>
+                </div>
+            @endforeach
+
+            <main class="py-4">
+                @yield('content')
+            </main>
+
+            <footer class="footer">
+                <div class="container text-center">
+                    <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-primary">
+                        ペット
+                    </a>
+                    <button class="btn btn-primary" type="button">
+                        体重比較
+                    </button>
+                    <button class="btn btn-primary" type="button">
+                        オススメ
+                    </button>
+                </div>
+            </footer>
+        </div>
 </body>
 
 </html>
