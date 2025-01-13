@@ -18,52 +18,52 @@
             @if(count($posts) == 0)
                 <p>右上の＋ボタンからペット登録をしてください。</p>
             @endif
-            @foreach($posts as $pets)
+            @foreach($posts as $pet)
                 <div class="d-flex justify-content-end">
-                    <button class="round_btn" onclick="deleteItem({{$pets->id}})">
+                    <button class="round_btn" onclick="deleteItem({{$pet->id}})">
                     </button>
                 </div>
                 <div class="card">
                     <div class="pet">
                         <div class="image">
-                            <img src="{{asset('storage/image/' . $pets->image_path) }}">
+                            <img src="{{asset('storage/image/' . $pet->image_path) }}">
                         </div>
                         <table class="table">
                             <tr>
                                 <th scope="row">名前:
-                                <td>{{ Str::limit($pets->name, 80) }}</td>
+                                <td>{{ Str::limit($pet->name, 80) }}</td>
                                 </th>
                             </tr>
                             <tr>
                                 <th scope="row">年齢:
-                                <td>{{ $pets->getAgeAttribute() }} 才 {{ $pets->getMonthAttribute() }}ヶ月</td>
+                                <td>{{ $pet->getAgeAttribute() }} 才 {{ $pet->getMonthAttribute() }}ヶ月</td>
                                 </th>
                             </tr>
                             <tr>
                                 <th class="row">性別:
-                                <td>{{ Str::limit($pets->gender, 80) }}</td>
+                                <td>{{ Str::limit($pet->gender, 80) }}</td>
                                 </th>
                             </tr>
                             <tr>
                                 <th class="row">種類:
-                                <td>{{ Str::limit($pets->animal->name, 80) }}</td>
+                                <td>{{ Str::limit($pet->animal->name, 80) }}</td>
                                 </th>
                             </tr>
                             <tr>
                                 <th class="row">誕生日:
-                                <td>{{ Str::limit($pets->birthday, 150) }}</td>
+                                <td>{{ Str::limit($pet->birthday, 150) }}</td>
                                 </th>
                             </tr>
                             <tr>
                                 <th class="row">メモ:
-                                <td>{{ Str::limit($pets->memo, 250) }}</td>
+                                <td>{{ Str::limit($pet->memo, 250) }}</td>
                                 </th>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('admin.pet.vital', ['id' => $pets->id]) }}" role="button" class="btn btn-secondary">
+                    <a href="{{ route('admin.pet.vital', ['id' => $pet->id]) }}" role="button" class="btn btn-secondary">
                         体調管理へ
                     </a>
                 </div>

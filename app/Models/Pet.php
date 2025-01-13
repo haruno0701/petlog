@@ -43,5 +43,15 @@ class Pet extends Model
         return $this->belongsTo('App\Models\Animal');
     }
 
+    public function weights()
+    {
+        return $this->hasMany('App\Models\Weight');
+    }
+
+    public function temperatures()
+    {
+        return $this->hasMany('App\Models\Temperature');
+    }
+
 }
 

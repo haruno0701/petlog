@@ -60,15 +60,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
-            @foreach ($pets as $pet)
-                <div class="bread">
-                    <ul>
-                        <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
-                        <li><a href="http://127.0.0.1:8080/admin/pet/vital?id=17">ぽん</a></li>
-                    </ul>
-                </div>
-            @endforeach
+        
 
             <main class="py-4">
                 @yield('content')
@@ -79,9 +71,9 @@
                     <a href="{{ route('admin.pet.index') }}" role="button" class="btn btn-primary">
                         ペット
                     </a>
-                    <button class="btn btn-primary" type="button">
+                    <a href="{{ route('admin.pet.comparison') }}" role="button" class="btn btn-primary">
                         体重比較
-                    </button>
+                    </a>
                     <button class="btn btn-primary" type="button">
                         オススメ
                     </button>

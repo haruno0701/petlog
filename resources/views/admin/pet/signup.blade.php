@@ -25,7 +25,6 @@
                     @endif
                     <div class="card">
                         <ul class="list-group list-group-flush">
-
                             <li class="list-group-item">
                                 <input class="form-control" type="text" name="name" placeholder="名前"
                                     aria-label="default input example">

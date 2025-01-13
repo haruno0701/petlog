@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 use App\Models\Pet;
+use App\Models\Weight;
+use App\Models\Temperature;
+use Carbon\Carbon;
 use Auth;
 class PetController extends Controller
 {
@@ -39,12 +42,9 @@ class PetController extends Controller
         $pets->user_id = Auth::id();
         $pets->save();
 
-        
-        
         return redirect('admin/pet/top');
     }
 
-    
 
     public function index(Request $request)
     {
@@ -75,7 +75,6 @@ class PetController extends Controller
         }
 
         unset($pets_form['image']);
-        unset($pets_form['remove']);
         unset($pets_form['_token']);
        
         $pets->fill($pets_form)->save();
@@ -92,27 +91,72 @@ class PetController extends Controller
 
         return redirect('admin/pet/top');
     }
+    public function deleteWeight(Request $request)
+    {
+      
+        $weights = Weight::find($request->id);
+
+        $weights->delete();
+
+        return redirect('admin/pet/top');
+    }
 
     public function vital(Request $request)
     {  
-        $pets = Pet::find($request->id);
+        $pet = Pet::find($request->id);
         
-        return view('admin.pet.vital',['pets' => $pets]);
+        return view('admin.pet.vital',['pet' => $pet]);
     }
 
     public function vitallist(Request $request)
     {     
-        $pet = Pet::all();
+        $pet = Pet::find($request->id);
         
         return view('admin.pet.vitallist',['pet' => $pet]);
     }
+    public function manageWeight(Request $request)
+    {  
+        $pet = Pet::find($request->id);
+        // dd($pet->weights);
 
-    public function weight(Request $request)
+        return view('admin.pet.manageWeight',['pet' => $pet]);
+    }
+    public function registWeight(Request $request)
     {     
-        $pet = Pet::all();
-        
-        return view('admin.pet.weight',['pet' => $pet]);
+        $this->validate($request, Weight::$rules);
+
+        $weight = new Weight;
+
+        $weight->fill(["weight" => $request->weight, "date" => Carbon::now()->isoFormat('YYYY/MM/DD(ddd) HH:mm'), "pet_id" => $request->pet_id ]);
+        $weight->save();
+        // dd($request->all(), $weight, $weight->save());
+
+        return redirect('admin/pet/weight?id=' . $weight->pet_id);
     }
 
+    public function manageTemperature(Request $request)
+    {  
+        $pet = Pet::find($request->id);
 
+        return view('admin.pet.manageTemperature',['pet' => $pet]);
+    }
+    public function registTemperature(Request $request)
+    {     
+        $this->validate($request, Temperature::$rules);
+
+        $temperature = new Temperature;
+
+        $temperature->fill(["temperature" => $request->temperature, "date" => Carbon::now()->isoFormat('YYYY/MM/DD(ddd) HH:mm'), "pet_id" => $request->pet_id ]);
+        $temperature->save();
+
+        return redirect('admin/pet/temperature?id=' . $temperature->pet_id);
+    }
+    public function comparison(Request $request)
+    {  
+        // dd($request->id);
+        $pet = Pet::find($request->id);
+        $animals = Animal::all();
+
+        return view('admin.pet.weightComparison',['pet' => $pet],['animals' => $animals]);
+    }
 }

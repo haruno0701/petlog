@@ -24,9 +24,15 @@ Route::controller(PetController::class)->prefix('admin')->name('admin.pet.')->mi
     Route::get('pet/top', 'index')->name('index');
     Route::post('pet/top', 'update')->name('update');
     Route::get('pet/delete', 'delete')->name('delete');
+    Route::get('weight/delete', 'deleteWeight')->name('deleteWeight');
     Route::get('pet/vital', 'vital')->name('vital');
     Route::get('pet/vitallist', 'vitallist')->name('vitallist');
-    Route::get('pet/weight', 'weight')->name('weight');
+    Route::get('pet/weight', 'manageWeight')->name('manageWeight');
+    Route::post('pet/weight', 'registWeight')->name('registWeight');
+    Route::get('pet/temperature', 'manageTemperature')->name('manageTemperature');
+    Route::post('pet/temperature', 'registTemperature')->name('registTemperature');
+    Route::get('pet/weightComparison', 'comparison')->name('comparison');
+
 });
 
 Auth::routes();
