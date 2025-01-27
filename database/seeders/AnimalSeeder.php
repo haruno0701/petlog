@@ -30,6 +30,7 @@ class AnimalSeeder extends Seeder
             ["name"=>"ラグドール","kinds"=>2],
             ["name"=>"ベンガル","kinds"=>2],
             ["name"=>"スコティッシュフォールド","kinds"=>2],
+
         ];
         foreach( $animals as $animal ) {
             Animal::create(['name'=>$animal["name"],'kinds'=>$animal["kinds"]]);

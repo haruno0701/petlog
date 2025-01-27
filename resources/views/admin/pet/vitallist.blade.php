@@ -28,30 +28,57 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($pet->weights as $weight)
+                            <tr>
+                                <th scope="row">{{ Str::limit($weight->date, 80) }}</th>
+                                <td>{{ Str::limit($weight->weight, 80) }}kg</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                        @foreach ($pet->temperatures as $temperature)
                         <tr>
-                            <th scope="row">　</th>
+                            <th scope="row">{{ Str::limit($temperature->date, 80) }}</th>
                             <td></td>
-                            <td></td>
+                            <td>{{ Str::limit($temperature->temperature, 80) }}℃</td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
+                        @endforeach
+                        @foreach ($pet->strolls as $stroll)
                         <tr>
-                            <th scope="row">　</th>
+                            <th scope="row">{{ Str::limit($stroll->date, 80) }}</th>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td>{{ Str::limit($stroll->stroll, 80) }}分/回</td>
                             <td></td>
                             <td></td>
                         </tr>
+                        @endforeach
+                        @foreach ($pet->urines as $urine)
                         <tr>
-                            <th scope="row">　</th>
+                            <th scope="row">{{ Str::limit($urine->date, 80) }}</th>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td>{{ Str::limit($urine->urine, 80) }}回</td>
                             <td></td>
                         </tr>
+                        @endforeach
+                        @foreach ($pet->flights as $flight)
+                        <tr>
+                            <th scope="row">{{ Str::limit($flight->date, 80) }}</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>{{ Str::limit($flight->flight, 80) }}回</td>
+                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

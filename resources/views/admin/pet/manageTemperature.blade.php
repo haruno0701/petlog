@@ -12,6 +12,7 @@
         </ul>
     </div>
     <form action="{{ route('admin.pet.registTemperature') }}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="pull-left">🐾{{$pet->name}}ちゃんの体温</div>
@@ -27,30 +28,38 @@
                     </button>
                 </div>
                 <input type="hidden" name="pet_id" class="form-control" value="{{$pet->id}}">
-                <div class="pull-left">前回の記録</div>
-                <div class="text-center">
-                    @foreach ($pet->temperatures as $temperature)
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">記録日</th>
-                                    <th scope="col">体温</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td>{{ Str::limit($temperature->date, 80) }}</td>
-                                <td>{{ Str::limit($temperature->temperature, 80) }}(℃)</td>
-                                <div class="d-flex justify-content-end">
-                                    <button class="round_btn" onclick="deleteItem({{$temperature}})">
-                                    </button>
-                                </div>
-                            </tr>
-                        </table>
-                    @endforeach
-                </div>
             </div>
         </div>
-        @csrf
     </form>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="pull-left">前回の記録</div>
+            <div class="text-center">
+                @foreach ($pet->temperatures as $temperature)
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">記録日</th>
+                                <th scope="col">体温</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>{{ Str::limit($temperature->date, 80) }}</td>
+                            <td>{{ Str::limit($temperature->temperature, 80) }}(℃)</td>
+                            <div class="d-flex justify-content-end">
+                                <!-- <button class="round_btn" onclick="deleteItem({{$temperature}})">
+                                                            </button> -->
+                                <form action="{{route('admin.pet.deleteTemperature')}}">
+                                    @csrf
+                                    <input type="hidden" name="id" class="form-control" value="{{$temperature->id}}">
+                                    <button class="round_btn" onclick="return confirm('削除しますか？')"></button>
+                                </form>
+                            </div>
+                        </tr>
+                    </table>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -52,6 +52,18 @@ class Pet extends Model
     {
         return $this->hasMany('App\Models\Temperature');
     }
+    public function strolls()
+    {
+        return $this->hasMany('App\Models\Stroll');
+    }
+    public function urines()
+    {
+        return $this->hasMany('App\Models\Urine');
+    }
+    public function flights()
+    {
+        return $this->hasMany('App\Models\Flight');
+    }
 
 }
 

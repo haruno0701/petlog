@@ -58,10 +58,10 @@
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <a href="{{ route('admin.pet.manageWeight', ['id' => $pet->id]) }}" class="btn btn-outline-dark">体重</a>
-                <a href="{{ route('admin.pet.manageTemperature', ['id' => $pet->id]) }}" class="btn btn-outline-dark">体温</a>
-                <a href="#" class="btn btn-outline-dark">散歩</a>
-                <a href="#" class="btn btn-outline-dark">尿</a>
-                <a href="#" class="btn btn-outline-dark">便</a>
+                <a href="{{ route('admin.pet.manageTemperature', ['id' => $pet->id])}}" class="btn btn-outline-dark">体温</a>
+                <a href="{{ route('admin.pet.manageStroll', ['id' => $pet->id]) }}" class="btn btn-outline-dark">散歩</a>
+                <a href="{{ route('admin.pet.manageUrine', ['id' => $pet->id]) }}" class="btn btn-outline-dark">尿</a>
+                <a href="{{ route('admin.pet.manageFlight', ['id' => $pet->id]) }}" class="btn btn-outline-dark">便</a>
             </div>
         </div>
     </div>

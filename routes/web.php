@@ -25,13 +25,24 @@ Route::controller(PetController::class)->prefix('admin')->name('admin.pet.')->mi
     Route::post('pet/top', 'update')->name('update');
     Route::get('pet/delete', 'delete')->name('delete');
     Route::get('weight/delete', 'deleteWeight')->name('deleteWeight');
+    Route::get('temperature/delete', 'deleteTemperature')->name('deleteTemperature');
+    Route::get('stroll/delete', 'deleteStroll')->name('deleteStroll');
+    Route::get('urine/delete', 'deleteUrine')->name('deleteUrine');
+    Route::get('flight/delete', 'deleteFlight')->name('deleteFlight');
     Route::get('pet/vital', 'vital')->name('vital');
     Route::get('pet/vitallist', 'vitallist')->name('vitallist');
     Route::get('pet/weight', 'manageWeight')->name('manageWeight');
     Route::post('pet/weight', 'registWeight')->name('registWeight');
     Route::get('pet/temperature', 'manageTemperature')->name('manageTemperature');
     Route::post('pet/temperature', 'registTemperature')->name('registTemperature');
+    Route::get('pet/stroll', 'manageStroll')->name('manageStroll');
+    Route::post('pet/stroll', 'registStroll')->name('registStroll');
+    Route::get('pet/urine', 'manageUrine')->name('manageUrine');
+    Route::post('pet/urine', 'registUrine')->name('registUrine');
+    Route::get('pet/flight', 'manageFlight')->name('manageFlight');
+    Route::post('pet/flight', 'registFlight')->name('registFlight');
     Route::get('pet/weightComparison', 'comparison')->name('comparison');
+
 
 });
 

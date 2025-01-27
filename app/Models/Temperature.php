@@ -9,14 +9,12 @@ use Carbon\Carbon;
 class Temperature extends Model
 {
     use HasFactory;
+    protected $guarded = array('id');
+
     public static $rules = array(
 
         'temperature' => 'required',
     );
 
-    public function history()
-    {
-        $now = Carbon::now()->isoFormat('YYYY/MM/DD(ddd) HH:mm:ss');
-        return $now;
-    }
+    
 }
