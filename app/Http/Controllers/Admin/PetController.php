@@ -26,6 +26,7 @@ class PetController extends Controller
 
     public function create(Request $request)
     {
+        // dd($request);
         $this->validate($request, Pet::$rules);
 
         $pets = new Pet;
@@ -51,9 +52,17 @@ class PetController extends Controller
 
     public function index(Request $request)
     {
+        // dd($request->animal_id);
+        if ($request->animal_id == null) {
+            $posts = Pet::all();
+        } else {
+            $animal = Animal::find($request->animal_id);
+            // dd($animal);
+            // $posts = Pet::all();
+            $posts = $animal->pets;
+        }
 
-        $posts = Pet::all();
-
+        // dd($posts);
         return view('admin.pet.top', ['posts' => $posts]);
 
     }
@@ -210,7 +219,7 @@ class PetController extends Controller
 
         return redirect('admin/pet/stroll?id=' . $stroll->pet_id);
     }
-    
+
 
     public function manageUrine(Request $request)
     {
@@ -251,11 +260,17 @@ class PetController extends Controller
 
     public function comparison(Request $request)
     {
-        // dd($request->id);
+        // dd($request);
         $pet = Pet::find($request->pet_id);
-        $animal = Animal::find($pet->animal_id);
+        // dd($pet);
+
+        $animal = null;
+        if ($pet) {
+            $animal = Animal::find($pet->animal_id);
+        }
+        
         $pets = Pet::where('user_id', Auth::id())->get();
 
-        return view('admin.pet.weightComparison', ['pet' => $pet, 'pets' => $pets,'animal' => $animal]);
+        return view('admin.pet.weightComparison', [ 'pet' => $pet,'pets' => $pets, 'animal' => $animal]);
     }
 }

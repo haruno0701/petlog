@@ -17,4 +17,9 @@ class Animal extends Model
         
     );
 
+    public function pets()
+    {
+        return $this->hasMany('App\Models\Pet');
+    }
+
 }

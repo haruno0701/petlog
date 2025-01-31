@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('animals', function (Blueprint $table) {
-            $table->id();
-            $table->string('kinds');
-            $table->string('name');
-            $table->string('appropriateWeight');
-            $table->timestamps();
+        Schema::table('animals', function (Blueprint $table) {
+            $table->string('appropriateWeight')->nullable()->change();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('animals');
+        Schema::table('animals', function (Blueprint $table) {
+            $table->string('appropriateWeight')->nullable(false)->change();
+        });
     }
 };

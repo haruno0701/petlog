@@ -17,3 +17,17 @@
 // .search-box{
     
 // }
+
+.appropriateWeight td {
+    color:red;
+
+}
+
+td.weight-diff {
+    &.few-weight {
+        color: #1E90FF;
+    }
+    &.much-weight {
+        color: red;
+    }
+}

@@ -14,7 +14,13 @@
   color: black;
 }
 
-.search-box {
-  width: 30%;
-  padding: 5px 0;
+.appropriateWeight td {
+  color: red;
+}
+
+td.weight-diff.few-weight {
+  color: #1E90FF;
+}
+td.weight-diff.much-weight {
+  color: red;
 }
