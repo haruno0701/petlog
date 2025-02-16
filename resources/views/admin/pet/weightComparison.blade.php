@@ -15,7 +15,8 @@
                         <option>選択してください。</option>
                         @foreach($pets as $selectItem)
                             <option value="{{$selectItem->id}}" @if(optional($pet)->id == $selectItem->id) selected @endif>
-                                {{$selectItem->name}}</option>
+                                {{$selectItem->name}}
+                            </option>
                         @endforeach
                     </select>
                     <div class='search-box'>
@@ -57,26 +58,26 @@
                     <tbody>
                         <div class="appropriateWeight">
                             @foreach ($pet->weights as $weight)
-                                                    <tr>
-                                                        <th scope="row">　
-                                                            {{$weight->date}}
-                                                        </th>
-                                                        <td>{{$weight->weight}}</td>
-                                                        @php 
-                                                                                            $weightDiffCssClass = '';
-                                                            $weightDiffPrefix = '±';
-                                                            $weightDiff = $weight->weight - $animal->appropriateWeight;
-                                                            if ($weightDiff > 0) {
-                                                                $weightDiffCssClass = 'much-weight';
-                                                                $weightDiffPrefix = '+';
-                                                            } else if ($weightDiff < 0) {
-                                                                $weightDiffCssClass = 'few-weight';
-                                                                $weightDiffPrefix = '';
-                                                            }
-                                                        @endphp
-                                                        <td class="weight-diff {{$weightDiffCssClass}}">
-                                                            {{$weightDiffPrefix . $weightDiff}}
-                                                        </td>
+                                <tr>
+                                    <th scope="row">　
+                                        {{$weight->date}}
+                                    </th>
+                                    <td>{{$weight->weight}}</td>
+                                    @php 
+                                                                                                                            $weightDiffCssClass = '';
+                                        $weightDiffPrefix = '±';
+                                        $weightDiff = $weight->weight - $animal->appropriateWeight;
+                                        if ($weightDiff > 0) {
+                                            $weightDiffCssClass = 'much-weight';
+                                            $weightDiffPrefix = '+';
+                                        } else if ($weightDiff < 0) {
+                                            $weightDiffCssClass = 'few-weight';
+                                            $weightDiffPrefix = '';
+                                        }
+                                    @endphp
+                                    <td class="weight-diff {{$weightDiffCssClass}}">
+                                        {{$weightDiffPrefix . $weightDiff}}
+                                    </td>
                             @endforeach
                             </tr>
                         </div>

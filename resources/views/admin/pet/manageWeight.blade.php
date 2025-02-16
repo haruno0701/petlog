@@ -11,7 +11,7 @@
 
         </ul>
     </div>
-    <form action="{{ route('admin.pet.registWeight') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.pet.registHealth') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-8 mx-auto">
@@ -19,7 +19,7 @@
                 <div class="mb-3 row">
                     <label for="text" class="col-sm-5 col-form-label">体重</label>
                     <div class="col-sm-3">
-                        <input type="text" name="weight" class="form-control">
+                        <input type="text" name="category_value" class="form-control">
                     </div>kg
                 </div>
                 <div class="d-flex justify-content-end">
@@ -28,6 +28,8 @@
                     </button>
                 </div>
                 <input type="hidden" name="pet_id" class="form-control" value="{{$pet->id}}">
+                <input type="hidden" name="category_id" class="form-control" value="1">
+                <input type="hidden" name="category_name" class="form-control" value="weight">
             </div>
         </div>
     </form>

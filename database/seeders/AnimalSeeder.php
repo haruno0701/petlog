@@ -30,10 +30,8 @@ class AnimalSeeder extends Seeder
             //["name"=>"ラグドール","kinds"=>2,"appropriateWeight"=>7.5],
             //["name"=>"ベンガル","kinds"=>2,"appropriateWeight"=>5],
             //["name"=>"スコティッシュフォールド","kinds"=>2,"appropriateWeight"=>4.5],
-            ["name"=>"MIX(犬)","kinds"=>1],
-            ["name"=>"MIX(猫)","kinds"=>2],
-
-
+            ["name"=>"MIX(犬)","kinds"=>1,"appropriateWeight"=>null],
+            ["name"=>"MIX(猫)","kinds"=>2,"appropriateWeight"=>null],
         ];
         foreach( $animals as $animal ) {
             Animal::create(['name'=>$animal["name"],'kinds'=>$animal["kinds"],'appropriateWeight'=>$animal["appropriateWeight"]]);

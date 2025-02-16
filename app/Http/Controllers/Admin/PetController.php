@@ -11,6 +11,9 @@ use App\Models\Stroll;
 use App\Models\Temperature;
 use App\Models\Urine;
 use App\Models\Flight;
+use App\Models\Category;
+use App\Models\Detail;
+
 use Carbon\Carbon;
 use Auth;
 class PetController extends Controller
@@ -155,6 +158,7 @@ class PetController extends Controller
     public function vitallist(Request $request)
     {
         $pet = Pet::find($request->id);
+        $categories = Category::find($request->id);
 
         return view('admin.pet.vitallist', ['pet' => $pet]);
     }
@@ -165,18 +169,18 @@ class PetController extends Controller
 
         return view('admin.pet.manageWeight', ['pet' => $pet]);
     }
-    public function registWeight(Request $request)
+    public function registHealth(Request $request)
     {
         // dd($request);
-        $this->validate($request, Weight::$rules);
+        $this->validate($request, Detail::$rules);
 
-        $weight = new Weight;
+        $detail = new Detail;
 
-        $weight->fill(["weight" => $request->weight, "date" => Carbon::now()->isoFormat('YYYY/MM/DD(ddd) HH:mm'), "pet_id" => $request->pet_id]);
-        $weight->save();
+        $detail->fill(["category_value" => $request->category_value, "category_id" => $request->category_id,"date" => Carbon::now()->isoFormat('YYYY/MM/DD(ddd) HH:mm'), "pet_id" => $request->pet_id]);
+        $detail->save();
         // dd($request->all(), $weight, $weight->save());
 
-        return redirect('admin/pet/weight?id=' . $weight->pet_id);
+        return redirect('admin/pet/' . $request->category_name . '?id=' . $detail->pet_id);
     }
 
     public function manageTemperature(Request $request)

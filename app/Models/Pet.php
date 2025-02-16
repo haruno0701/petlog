@@ -64,6 +64,11 @@ class Pet extends Model
     {
         return $this->hasMany('App\Models\Flight');
     }
+    
+    public function details()
+    {
+        return $this->hasMany('App\Models\Detail');
+    }
 
 }
 
