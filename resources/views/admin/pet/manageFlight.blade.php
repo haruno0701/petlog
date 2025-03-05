@@ -37,7 +37,7 @@
         <div class="col-md-8 mx-auto">
             <div class="pull-left">前回の記録</div>
             <div class="text-center">
-                @foreach ($pet->flights as $flight)
+                @foreach ($details as $flight)
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -47,7 +47,7 @@
                         </thead>
                         <tr>
                             <td>{{ Str::limit($flight->date, 80) }}</td>
-                            <td>{{ Str::limit($flight->flight, 80) }}(回)</td>
+                            <td>{{ Str::limit($flight->category_value, 80) }}(回)</td>
                             <div class="d-flex justify-content-end">
                                 <form action="{{route('admin.pet.deleteFlight')}}">
                                     @csrf

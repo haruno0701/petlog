@@ -74,9 +74,9 @@
                     <a href="{{ route('admin.pet.comparison') }}" role="button" class="btn btn-primary">
                         体重比較
                     </a>
-                    <button class="btn btn-primary" type="button">
+                    <!-- <button class="btn btn-primary" type="button">
                         オススメ
-                    </button>
+                    </button> -->
                 </div>
             </footer>
         </div>

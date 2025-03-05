@@ -158,16 +158,22 @@ class PetController extends Controller
     public function vitallist(Request $request)
     {
         $pet = Pet::find($request->id);
-        $categories = Category::find($request->id);
+        $cond_category = $request->cond_category;
+        if($cond_category == 'all' || $cond_category == null){
+            $details = Detail::where('pet_id',$request->id)->get();
+        }else{
+            $details = Detail::where('category_id',$cond_category)->where('pet_id',$request->id)->get();
+        }
 
-        return view('admin.pet.vitallist', ['pet' => $pet]);
+        return view('admin.pet.vitallist', ['pet' => $pet, 'details' => $details]);
     }
     public function manageWeight(Request $request)
     {
         $pet = Pet::find($request->id);
+        $details = Detail::where('category_id', 1)->where('pet_id', $request->id)->get();
         // dd($pet->weights);
 
-        return view('admin.pet.manageWeight', ['pet' => $pet]);
+        return view('admin.pet.manageWeight', ['pet' => $pet, 'details' => $details]);
     }
     public function registHealth(Request $request)
     {
@@ -186,8 +192,9 @@ class PetController extends Controller
     public function manageTemperature(Request $request)
     {
         $pet = Pet::find($request->id);
+        $details = Detail::where('category_id', 2)->where('pet_id', $request->id)->get();
 
-        return view('admin.pet.manageTemperature', ['pet' => $pet]);
+        return view('admin.pet.manageTemperature', ['pet' => $pet, 'details' => $details]);
     }
     public function registTemperature(Request $request)
     {
@@ -204,9 +211,11 @@ class PetController extends Controller
     public function manageStroll(Request $request)
     {
         $pet = Pet::find($request->id);
+        $details = Detail::where('category_id', 3)->where('pet_id', $request->id)->get();
+
         // dd($pet->strolls);
 
-        return view('admin.pet.manageStroll', ['pet' => $pet]);
+        return view('admin.pet.manageStroll', ['pet' => $pet, 'details' => $details]);
     }
     public function registStroll(Request $request)
     {
@@ -228,8 +237,9 @@ class PetController extends Controller
     public function manageUrine(Request $request)
     {
         $pet = Pet::find($request->id);
+        $details = Detail::where('category_id', 4)->where('pet_id', $request->id)->get();
 
-        return view('admin.pet.manageUrine', ['pet' => $pet]);
+        return view('admin.pet.manageUrine', ['pet' => $pet, 'details' => $details]);
     }
     public function registUrine(Request $request)
     {
@@ -246,8 +256,9 @@ class PetController extends Controller
     public function manageFlight(Request $request)
     {
         $pet = Pet::find($request->id);
+        $details = Detail::where('category_id', 5)->where('pet_id', $request->id)->get();
 
-        return view('admin.pet.manageFlight', ['pet' => $pet]);
+        return view('admin.pet.manageFlight', ['pet' => $pet, 'details' => $details]);
     }
     public function registFlight(Request $request)
     {
@@ -274,7 +285,8 @@ class PetController extends Controller
         }
         
         $pets = Pet::where('user_id', Auth::id())->get();
+        $details = Detail::where('category_id', 1)->where('pet_id', $request->pet_id)->get();
 
-        return view('admin.pet.weightComparison', [ 'pet' => $pet,'pets' => $pets, 'animal' => $animal]);
+        return view('admin.pet.weightComparison', [ 'pet' => $pet,'pets' => $pets, 'animal' => $animal, 'details' => $details]);
     }
 }

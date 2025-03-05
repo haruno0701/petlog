@@ -37,7 +37,7 @@
         <div class="col-md-8 mx-auto">
             <div class="pull-left">前回の記録</div>
             <div class="text-center">
-                @foreach ($pet->weights as $weight)
+                @foreach ($details as $weight)
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -47,7 +47,7 @@
                         </thead>
                         <tr>
                             <td>{{ Str::limit($weight->date, 80) }}</td>
-                            <td>{{ Str::limit($weight->weight, 80) }}(kg)</td>
+                            <td>{{ Str::limit($weight->category_value, 80) }}(kg)</td>
                             <div class="d-flex justify-content-end">
                                 <!-- <button class="round_btn" onclick="deleteWeight({{$weight->id}})"> -->
                                 <!-- </button> -->

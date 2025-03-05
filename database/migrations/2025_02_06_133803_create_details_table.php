@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
-            $table->string('pet_id');
-            $table->string('category_id');
+            $table->foreignId('pet_id')->constrained('pets');
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('category_value');
             $table->string('date');
             $table->timestamps();

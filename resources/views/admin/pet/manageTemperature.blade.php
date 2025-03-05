@@ -38,7 +38,7 @@
         <div class="col-md-8 mx-auto">
             <div class="pull-left">前回の記録</div>
             <div class="text-center">
-                @foreach ($pet->temperatures as $temperature)
+                @foreach ($details as $temperature)
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -48,7 +48,7 @@
                         </thead>
                         <tr>
                             <td>{{ Str::limit($temperature->date, 80) }}</td>
-                            <td>{{ Str::limit($temperature->temperature, 80) }}(℃)</td>
+                            <td>{{ Str::limit($temperature->category_value, 80) }}(℃)</td>
                             <div class="d-flex justify-content-end">
                                 <!-- <button class="round_btn" onclick="deleteItem({{$temperature}})">
                                                             </button> -->

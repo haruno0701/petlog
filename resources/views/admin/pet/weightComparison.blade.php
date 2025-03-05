@@ -57,16 +57,16 @@
                     </thead>
                     <tbody>
                         <div class="appropriateWeight">
-                            @foreach ($pet->weights as $weight)
+                            @foreach ($details as $weight)
                                 <tr>
                                     <th scope="row">　
                                         {{$weight->date}}
                                     </th>
-                                    <td>{{$weight->weight}}</td>
+                                    <td>{{$weight->category_value}}</td>
                                     @php 
                                                                                                                             $weightDiffCssClass = '';
                                         $weightDiffPrefix = '±';
-                                        $weightDiff = $weight->weight - $animal->appropriateWeight;
+                                        $weightDiff = $weight->category_value - $animal->appropriateWeight;
                                         if ($weightDiff > 0) {
                                             $weightDiffCssClass = 'much-weight';
                                             $weightDiffPrefix = '+';

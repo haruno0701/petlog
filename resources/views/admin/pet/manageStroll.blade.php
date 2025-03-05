@@ -37,7 +37,7 @@
         <div class="col-md-8 mx-auto">
             <div class="pull-left">前回の記録</div>
             <div class="text-center">
-                @foreach ($pet->strolls as $stroll)
+                @foreach ($details as $stroll)
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -47,7 +47,7 @@
                         </thead>
                         <tr>
                             <td>{{ Str::limit($stroll->date, 80) }}</td>
-                            <td>{{ Str::limit($stroll->stroll, 80) }}(分/回)</td>
+                            <td>{{ Str::limit($stroll->category_value, 80) }}(分/回)</td>
                             <div class="d-flex justify-content-end">
                                 <form action="{{route('admin.pet.deleteStroll')}}">
                                     @csrf
