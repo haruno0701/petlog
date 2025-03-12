@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 html {
   height: 100%;
 }
@@ -82,4 +83,23 @@ head {
 
 .round_btn::after {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show,
+.nav-link,
+.nav-link:hover,
+.nav-link:focus {
+
+  color: #000000;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: var(--bs-navbar-nav-link-padding-x);
+  padding-left: var(--bs-navbar-nav-link-padding-x);
+}
+
+.navbar-expand-md .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
 }

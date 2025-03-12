@@ -88,3 +88,8 @@ head {
 .round_btn::after {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+
+  color: #000000;
+}
