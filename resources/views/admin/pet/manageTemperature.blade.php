@@ -5,9 +5,9 @@
 <div class="container">
     <div class="bread">
         <ul>
-            <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/temperature?id={{$pet->id}}">{{$pet->name}}の体温</a></li>
+            <li><a href="/admin/pet/top">ペット一覧</a></li>
+            <li><a href="/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
+            <li><a href="/admin/pet/temperature?id={{$pet->id}}">{{$pet->name}}の体温</a></li>
 
         </ul>
     </div>
@@ -52,9 +52,10 @@
                             <div class="d-flex justify-content-end">
                                 <!-- <button class="round_btn" onclick="deleteItem({{$temperature}})">
                                                             </button> -->
-                                <form action="{{route('admin.pet.deleteTemperature')}}">
+                                <form action="{{route('admin.pet.deleteDetail')}}">
                                     @csrf
-                                    <input type="hidden" name="id" class="form-control" value="{{$temperature->id}}">
+                                    <input type="hidden" name="id" value="{{$temperature->id}}">
+                                    <input type="hidden" name="detail_page_name" value="temperature">
                                     <button class="round_btn" onclick="return confirm('削除しますか？')"></button>
                                 </form>
                             </div>

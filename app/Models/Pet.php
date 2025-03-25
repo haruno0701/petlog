@@ -19,6 +19,15 @@ class Pet extends Model
         
     );
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($article) {
+            $article->details()->delete();
+        });
+    }
+
     public function getCarbonBirthday()
     {
         return Carbon::createFromFormat('Y/m/d', $this->birthday);

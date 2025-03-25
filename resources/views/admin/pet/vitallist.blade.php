@@ -5,9 +5,9 @@
     <div class="container">
         <div class="bread">
             <ul>
-                <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
-                <li><a href="http://127.0.0.1:8080/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
-                <li><a href="http://127.0.0.1:8080/admin/pet/vitallist?id={{$pet->id}}">{{$pet->name}}の体調管理一覧</a></li>
+                <li><a href="/admin/pet/top">ペット一覧</a></li>
+                <li><a href="/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
+                <li><a href="/admin/pet/vitallist?id={{$pet->id}}">{{$pet->name}}の体調管理一覧</a></li>
             </ul>
         </div>
         <form action="{{ route('admin.pet.vitallist') }}" method="get" enctype="multipart/form-data">

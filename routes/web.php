@@ -24,6 +24,7 @@ Route::controller(PetController::class)->prefix('admin')->name('admin.pet.')->mi
     Route::get('pet/top', 'index')->name('index');
     Route::post('pet/top', 'update')->name('update');
     Route::get('pet/delete', 'delete')->name('delete');
+    Route::get('detail/delete', 'deleteDetail')->name('deleteDetail');
     Route::get('weight/delete', 'deleteWeight')->name('deleteWeight');
     Route::get('temperature/delete', 'deleteTemperature')->name('deleteTemperature');
     Route::get('stroll/delete', 'deleteStroll')->name('deleteStroll');

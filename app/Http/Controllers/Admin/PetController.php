@@ -56,14 +56,21 @@ class PetController extends Controller
     public function index(Request $request)
     {
         // dd($request->animal_id);
-        if ($request->animal_id == null) {
-            $posts = Pet::all();
-        } else {
-            $animal = Animal::find($request->animal_id);
-            // dd($animal);
-            // $posts = Pet::all();
-            $posts = $animal->pets;
+        $query = Pet::where('user_id', Auth::id());
+        if ($request->animal_id != null) {
+            $query = $query->where('animal_id', $request->animal_id);
         }
+        $posts = $query->get();
+
+        // if ($request->animal_id == null) {
+        //     $posts = Pet::where('user_id', Auth::id())->get();
+        // } else {
+        //     // $animal = Animal::find($request->animal_id);
+        //     // // dd($animal);
+        //     // // $posts = Pet::all();
+        //     // $posts = $animal->pets;
+        //     $posts = Pet::where('user_id', Auth::id())->where('animal_id', $request->animal_id)->get();
+        // }
 
         // dd($posts);
         return view('admin.pet.top', ['posts' => $posts]);
@@ -106,15 +113,28 @@ class PetController extends Controller
 
         return redirect('admin/pet/top');
     }
+
+    public function deleteDetail(Request $request)
+    {
+        //$details = Detail::where('category_id', 1)->where('pet_id', $request->id)->get();
+        $detail = Detail::find($request->id);
+
+        // TODO: $detailが見つからない場合は404返す
+
+        $pet_id = $detail->pet_id;
+        $detail->delete();
+
+        return redirect('admin/pet/' . $request->detail_page_name . '?id=' . $pet_id);
+    }
     public function deleteWeight(Request $request)
     {
         // dd($request->id);
         $weights = Weight::find($request->id);
-        // dd($weights);
         $weights->delete();
 
         return redirect('admin/pet/weight?id=' . $weights->pet_id);
     }
+    
     public function deleteTemperature(Request $request)
     {
         // dd($request->id);

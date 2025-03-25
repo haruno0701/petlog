@@ -51,9 +51,10 @@
                             <div class="d-flex justify-content-end">
                                 <!-- <button class="round_btn" onclick="deleteWeight({{$weight->id}})"> -->
                                 <!-- </button> -->
-                                <form action="{{route('admin.pet.deleteWeight')}}">
+                                <form action="{{route('admin.pet.deleteDetail')}}">
                                     @csrf
                                     <input type="hidden" name="id" class="form-control" value="{{$weight->id}}">
+                                    <input type="hidden" name="detail_page_name" value="weight">
                                     <button class="round_btn" onclick="return confirm('削除しますか？')"></button>
                                 </form>
                             </div>

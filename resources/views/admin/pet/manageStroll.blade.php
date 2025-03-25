@@ -5,9 +5,9 @@
 <div class="container">
     <div class="bread">
         <ul>
-            <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/stroll?id={{$pet->id}}">{{$pet->name}}の散歩</a></li>
+            <li><a href="/admin/pet/top">ペット一覧</a></li>
+            <li><a href="/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
+            <li><a href="/admin/pet/stroll?id={{$pet->id}}">{{$pet->name}}の散歩</a></li>
 
         </ul>
     </div>
@@ -49,9 +49,10 @@
                             <td>{{ Str::limit($stroll->date, 80) }}</td>
                             <td>{{ Str::limit($stroll->category_value, 80) }}(分/回)</td>
                             <div class="d-flex justify-content-end">
-                                <form action="{{route('admin.pet.deleteStroll')}}">
+                                <form action="{{route('admin.pet.deleteDetail')}}">
                                     @csrf
                                     <input type="hidden" name="id" class="form-control" value="{{$stroll->id}}">
+                                    <input type="hidden" name="detail_page_name" value="stroll">
                                     <button class="round_btn" onclick="return confirm('削除しますか？')"></button>
                                 </form>
                             </div>

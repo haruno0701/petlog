@@ -5,9 +5,9 @@
 <div class="container">
     <div class="bread">
         <ul>
-            <li><a href="http://127.0.0.1:8080/admin/pet/top">ペット一覧</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
-            <li><a href="http://127.0.0.1:8080/admin/pet/flight?id={{$pet->id}}">{{$pet->name}}の便</a></li>
+            <li><a href="/admin/pet/top">ペット一覧</a></li>
+            <li><a href="/admin/pet/vital?id={{$pet->id}}">{{$pet->name}}</a></li>
+            <li><a href="/admin/pet/flight?id={{$pet->id}}">{{$pet->name}}の便</a></li>
 
         </ul>
     </div>
@@ -49,9 +49,10 @@
                             <td>{{ Str::limit($flight->date, 80) }}</td>
                             <td>{{ Str::limit($flight->category_value, 80) }}(回)</td>
                             <div class="d-flex justify-content-end">
-                                <form action="{{route('admin.pet.deleteFlight')}}">
+                                <form action="{{route('admin.pet.deleteDetail')}}">
                                     @csrf
                                     <input type="hidden" name="id" class="form-control" value="{{$flight->id}}">
+                                    <input type="hidden" name="detail_page_name" value="flight">
                                     <button class="round_btn" onclick="return confirm('削除しますか？')"></button>
                                 </form>
                             </div>
